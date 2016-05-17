@@ -1,0 +1,183 @@
+\hypertarget{smallsh_8h}{\section{smallsh.\-h File Reference}
+\label{smallsh_8h}\index{smallsh.\-h@{smallsh.\-h}}
+}
+{\ttfamily \#include \char`\"{}gettok.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}userfn.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}buffer.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$unistd.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$sys/types.\-h$>$}\\*
+{\ttfamily \#include $<$sys/wait.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}cmd/bgproc.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}cmd/directorio.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}list\-Processes.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}time.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}process.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$sys/stat.\-h$>$}\\*
+{\ttfamily \#include $<$dirent.\-h$>$}\\*
+{\ttfamily \#include $<$errno.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}command.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}list\-Commands.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{smallsh_8h_a4c171d1ccc50f0b6ce7ad2f475eeba32}{\#define {\bfseries M\-A\-X\-A\-R\-G}~512}\label{smallsh_8h_a4c171d1ccc50f0b6ce7ad2f475eeba32}
+
+\item 
+\hypertarget{smallsh_8h_a2a375179c125d0867430c6778c343b6f}{\#define {\bfseries F\-O\-R\-E\-G\-R\-O\-U\-N\-D}~0}\label{smallsh_8h_a2a375179c125d0867430c6778c343b6f}
+
+\item 
+\hypertarget{smallsh_8h_a850b2f07a67b73890889e63fb8a49fda}{\#define {\bfseries B\-A\-C\-K\-G\-R\-O\-U\-N\-D}~1}\label{smallsh_8h_a850b2f07a67b73890889e63fb8a49fda}
+
+\item 
+\hypertarget{smallsh_8h_a1ca7e1fbdf49e02ec34430622f94f064}{\#define {\bfseries M\-A\-X\-C\-O\-M\-M\-A\-N\-D}~10}\label{smallsh_8h_a1ca7e1fbdf49e02ec34430622f94f064}
+
+\item 
+\hypertarget{smallsh_8h_a332d9c4e633f78da1ba2dc3c73ec81ee}{\#define {\bfseries M\-O\-D\-O\-\_\-\-I\-N\-T\-E\-R\-P\-R\-E\-T\-A\-D\-O\-\_\-\-O\-N}~1}\label{smallsh_8h_a332d9c4e633f78da1ba2dc3c73ec81ee}
+
+\item 
+\hypertarget{smallsh_8h_ac404024495667fb291916056d79d7ea0}{\#define {\bfseries M\-O\-D\-O\-\_\-\-I\-N\-T\-E\-R\-P\-R\-E\-T\-A\-D\-O\-\_\-\-O\-F\-F}~0}\label{smallsh_8h_ac404024495667fb291916056d79d7ea0}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{smallsh_8h_afca007f7f619b6878174caa1ff39b59a}{void {\bfseries procline} (struct \hyperlink{structTokBuf}{Tok\-Buf} $\ast$)}\label{smallsh_8h_afca007f7f619b6878174caa1ff39b59a}
+
+\item 
+int \hyperlink{smallsh_8h_a88606f62bd097654b8ab1118c40766fc}{runcommand} (char $\ast$const $\ast$, unsigned)
+\item 
+int \hyperlink{smallsh_8h_ad00929bf4ce875c32f436d9ffbb339e3}{runcommand\-\_\-alarm} (char $\ast$const $\ast$, unsigned, int)
+\begin{DoxyCompactList}\small\item\em runcommand\-\_\-alarm, se utiliza cuando queremos llamar a un proceso en segundo plano estableciendo una alarma, haciendo uso de la notación \char`\"{}@\char`\"{}. Ĺa funcionalidad es similar a runcommand, aunque necesitamos un parámetro más que simboliza el tiempo de la alarma establecida. la orden bgproc. \end{DoxyCompactList}\item 
+int \hyperlink{smallsh_8h_a51fe282383771e62ed897df75ff3a5ff}{runcommand\-\_\-pipe} (char $\ast$const $\ast$cline)
+\begin{DoxyCompactList}\small\item\em runcommand\-\_\-pipe, se utiliza cuando queremos llamar a una tubería. Necesitamos recuperar todos los comandos de la tubería, para poder lanzarlos en correcto orden, y para ello utilizamos las estructuras \hyperlink{structPipeCommand}{Pipe\-Command} y \hyperlink{structListPipeCommand}{List\-Pipe\-Command}. De esta manera, es más sencilla una correcta organización de los comandos introducidos en el pipe actual y su lanzamiento. \end{DoxyCompactList}\item 
+int \hyperlink{smallsh_8h_ae9e284ea6c120c8f3bfcf73f5b2ed728}{run\-\_\-exit} ()
+\begin{DoxyCompactList}\small\item\em runcommand\-\_\-exit, se utiliza cuando queremos terminar la ejecución de smallsh. Necesitamos eliminar todos los procesos que queden en segundo plano, y para ellos hacemos uso de la estructuras \hyperlink{structListProcess}{List\-Process}, \hyperlink{structProcess}{Process} para liberar la memoria de los procesos activos. \end{DoxyCompactList}\item 
+int \hyperlink{smallsh_8h_ac942067a7e5a314610c1e89ff801f3bd}{join} ()
+\begin{DoxyCompactList}\small\item\em join, utilizada dentro de la función runcommand\-\_\-pipe. Es el encargado de procesar los comandos recogidos en la estructura \hyperlink{structListPipeCommand}{List\-Pipe\-Command}, haciendo uso de la función pipe() y fork() para un uso correcto. \end{DoxyCompactList}\item 
+void \hyperlink{smallsh_8h_a7da8000096455a14457e0819417df7dd}{run\-\_\-bgproc} ()
+\begin{DoxyCompactList}\small\item\em Orden bgproc, visualización de comandos en segundo plano. En esta orden, utilizamos una lista de comandos (\hyperlink{structListCommand}{List\-Command}) para mostrar los procesos activos en segundo plano. \end{DoxyCompactList}\item 
+void \hyperlink{smallsh_8h_a2ea5757f9455490eb240245c6c6f6a48}{run\-\_\-sleep} ()
+\begin{DoxyCompactList}\small\item\em Orden sleep, prueba para un proceso que simplemente se duerme. En esta orden, utilizamos la orden sleep para dormir a un proceso y poder probar correctamente la orden bgproc. \end{DoxyCompactList}\item 
+\hypertarget{smallsh_8h_a8354d9d2cfbd1ca5754e0b533735d5b5}{void {\bfseries run\-\_\-find\-By\-String} (char $\ast$const $\ast$)}\label{smallsh_8h_a8354d9d2cfbd1ca5754e0b533735d5b5}
+
+\item 
+\hypertarget{smallsh_8h_ac76b00ba5e764d7c04f8a6d765df6e21}{void {\bfseries run\-\_\-cd} (char $\ast$const $\ast$)}\label{smallsh_8h_ac76b00ba5e764d7c04f8a6d765df6e21}
+
+\item 
+\hypertarget{smallsh_8h_a467afc527115c69a24b8d8dcea255111}{void {\bfseries set\-Last\-Alarm} (int)}\label{smallsh_8h_a467afc527115c69a24b8d8dcea255111}
+
+\item 
+\hypertarget{smallsh_8h_a3968693028398f045540ea5cdb505175}{int {\bfseries get\-Last\-Alarm} ()}\label{smallsh_8h_a3968693028398f045540ea5cdb505175}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+José Ángel 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+17 May 2016 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{smallsh_8h_ac942067a7e5a314610c1e89ff801f3bd}{\index{smallsh.\-h@{smallsh.\-h}!join@{join}}
+\index{join@{join}!smallsh.h@{smallsh.\-h}}
+\subsubsection[{join}]{\setlength{\rightskip}{0pt plus 5cm}int join (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{smallsh_8h_ac942067a7e5a314610c1e89ff801f3bd}
+
+
+join, utilizada dentro de la función runcommand\-\_\-pipe. Es el encargado de procesar los comandos recogidos en la estructura \hyperlink{structListPipeCommand}{List\-Pipe\-Command}, haciendo uso de la función pipe() y fork() para un uso correcto. 
+
+\begin{DoxyReturn}{Returns}
+int, devuelve el código de salida de la operación. 
+\end{DoxyReturn}
+Creamos las tuberias y almacenamos los descriptores de ficheros \hypertarget{smallsh_8h_a7da8000096455a14457e0819417df7dd}{\index{smallsh.\-h@{smallsh.\-h}!run\-\_\-bgproc@{run\-\_\-bgproc}}
+\index{run\-\_\-bgproc@{run\-\_\-bgproc}!smallsh.h@{smallsh.\-h}}
+\subsubsection[{run\-\_\-bgproc}]{\setlength{\rightskip}{0pt plus 5cm}void run\-\_\-bgproc (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{smallsh_8h_a7da8000096455a14457e0819417df7dd}
+
+
+Orden bgproc, visualización de comandos en segundo plano. En esta orden, utilizamos una lista de comandos (\hyperlink{structListCommand}{List\-Command}) para mostrar los procesos activos en segundo plano. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{smallsh_8h_ae9e284ea6c120c8f3bfcf73f5b2ed728}{\index{smallsh.\-h@{smallsh.\-h}!run\-\_\-exit@{run\-\_\-exit}}
+\index{run\-\_\-exit@{run\-\_\-exit}!smallsh.h@{smallsh.\-h}}
+\subsubsection[{run\-\_\-exit}]{\setlength{\rightskip}{0pt plus 5cm}int run\-\_\-exit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{smallsh_8h_ae9e284ea6c120c8f3bfcf73f5b2ed728}
+
+
+runcommand\-\_\-exit, se utiliza cuando queremos terminar la ejecución de smallsh. Necesitamos eliminar todos los procesos que queden en segundo plano, y para ellos hacemos uso de la estructuras \hyperlink{structListProcess}{List\-Process}, \hyperlink{structProcess}{Process} para liberar la memoria de los procesos activos. 
+
+\begin{DoxyReturn}{Returns}
+int, devuelve el código de salida de la operación. 
+\end{DoxyReturn}
+\hypertarget{smallsh_8h_a2ea5757f9455490eb240245c6c6f6a48}{\index{smallsh.\-h@{smallsh.\-h}!run\-\_\-sleep@{run\-\_\-sleep}}
+\index{run\-\_\-sleep@{run\-\_\-sleep}!smallsh.h@{smallsh.\-h}}
+\subsubsection[{run\-\_\-sleep}]{\setlength{\rightskip}{0pt plus 5cm}void run\-\_\-sleep (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{smallsh_8h_a2ea5757f9455490eb240245c6c6f6a48}
+
+
+Orden sleep, prueba para un proceso que simplemente se duerme. En esta orden, utilizamos la orden sleep para dormir a un proceso y poder probar correctamente la orden bgproc. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{smallsh_8h_a88606f62bd097654b8ab1118c40766fc}{\index{smallsh.\-h@{smallsh.\-h}!runcommand@{runcommand}}
+\index{runcommand@{runcommand}!smallsh.h@{smallsh.\-h}}
+\subsubsection[{runcommand}]{\setlength{\rightskip}{0pt plus 5cm}int runcommand (
+\begin{DoxyParamCaption}
+\item[{char $\ast$const $\ast$}]{, }
+\item[{unsigned}]{}
+\end{DoxyParamCaption}
+)}}\label{smallsh_8h_a88606f62bd097654b8ab1118c40766fc}
+Si es un proceso en primer plano, ejecutamos la rutina de tratamiento por defecto
+
+Si es un proceso en segundo plano, el tratamiento de estas señales será ignorarlas \hypertarget{smallsh_8h_ad00929bf4ce875c32f436d9ffbb339e3}{\index{smallsh.\-h@{smallsh.\-h}!runcommand\-\_\-alarm@{runcommand\-\_\-alarm}}
+\index{runcommand\-\_\-alarm@{runcommand\-\_\-alarm}!smallsh.h@{smallsh.\-h}}
+\subsubsection[{runcommand\-\_\-alarm}]{\setlength{\rightskip}{0pt plus 5cm}int runcommand\-\_\-alarm (
+\begin{DoxyParamCaption}
+\item[{char $\ast$const $\ast$}]{, }
+\item[{unsigned}]{, }
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}\label{smallsh_8h_ad00929bf4ce875c32f436d9ffbb339e3}
+
+
+runcommand\-\_\-alarm, se utiliza cuando queremos llamar a un proceso en segundo plano estableciendo una alarma, haciendo uso de la notación \char`\"{}@\char`\"{}. Ĺa funcionalidad es similar a runcommand, aunque necesitamos un parámetro más que simboliza el tiempo de la alarma establecida. la orden bgproc. 
+
+\begin{DoxyReturn}{Returns}
+int, devuelve el código de salida de la operación. 
+\end{DoxyReturn}
+Si es un proceso en segundo plano, el tratamiento de estas señales será ignorarlas \hypertarget{smallsh_8h_a51fe282383771e62ed897df75ff3a5ff}{\index{smallsh.\-h@{smallsh.\-h}!runcommand\-\_\-pipe@{runcommand\-\_\-pipe}}
+\index{runcommand\-\_\-pipe@{runcommand\-\_\-pipe}!smallsh.h@{smallsh.\-h}}
+\subsubsection[{runcommand\-\_\-pipe}]{\setlength{\rightskip}{0pt plus 5cm}int runcommand\-\_\-pipe (
+\begin{DoxyParamCaption}
+\item[{char $\ast$const $\ast$}]{cline}
+\end{DoxyParamCaption}
+)}}\label{smallsh_8h_a51fe282383771e62ed897df75ff3a5ff}
+
+
+runcommand\-\_\-pipe, se utiliza cuando queremos llamar a una tubería. Necesitamos recuperar todos los comandos de la tubería, para poder lanzarlos en correcto orden, y para ello utilizamos las estructuras \hyperlink{structPipeCommand}{Pipe\-Command} y \hyperlink{structListPipeCommand}{List\-Pipe\-Command}. De esta manera, es más sencilla una correcta organización de los comandos introducidos en el pipe actual y su lanzamiento. 
+
+\begin{DoxyReturn}{Returns}
+int, devuelve el código de salida de la operación. 
+\end{DoxyReturn}

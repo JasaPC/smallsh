@@ -1,0 +1,86 @@
+\hypertarget{command_8h}{\section{command.\-h File Reference}
+\label{command_8h}\index{command.\-h@{command.\-h}}
+}
+{\ttfamily \#include \char`\"{}smallsh.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structCommand}{Command}
+\begin{DoxyCompactList}\small\item\em Tipo de datos \hyperlink{structCommand}{Command}. \end{DoxyCompactList}\item 
+struct \hyperlink{structPipeCommand}{Pipe\-Command}
+\begin{DoxyCompactList}\small\item\em Tipo de datos \hyperlink{structPipeCommand}{Pipe\-Command}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structCommand}{Command} \hyperlink{command_8h_a1e070cd9ac686a0bb549183eaf77290e}{Command}
+\begin{DoxyCompactList}\small\item\em Tipo de datos \hyperlink{structCommand}{Command}. \end{DoxyCompactList}\item 
+typedef struct \hyperlink{structPipeCommand}{Pipe\-Command} \hyperlink{command_8h_a19343a16b7123bbc937cdd45935dedcb}{Pipe\-Command}
+\begin{DoxyCompactList}\small\item\em Tipo de datos \hyperlink{structPipeCommand}{Pipe\-Command}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structCommand}{Command} $\ast$ \hyperlink{command_8h_ae8261ade6cc99a31700d96b7a0464d33}{create\-Command} (const char $\ast$)
+\begin{DoxyCompactList}\small\item\em Tipo de datos \hyperlink{structPipeCommand}{Pipe\-Command}. \end{DoxyCompactList}\item 
+int \hyperlink{command_8h_a8006fcf75821a0bf3281c6ade35d6e83}{equals} (struct \hyperlink{structCommand}{Command} $\ast$, struct \hyperlink{structCommand}{Command} $\ast$)
+\begin{DoxyCompactList}\small\item\em Tipo de datos \hyperlink{structPipeCommand}{Pipe\-Command}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+José Ángel 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+17 May 2016 
+\end{DoxyDate}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{command_8h_a1e070cd9ac686a0bb549183eaf77290e}{\index{command.\-h@{command.\-h}!Command@{Command}}
+\index{Command@{Command}!command.h@{command.\-h}}
+\subsubsection[{Command}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Command}  {\bf Command}}}\label{command_8h_a1e070cd9ac686a0bb549183eaf77290e}
+
+
+Tipo de datos \hyperlink{structCommand}{Command}. 
+
+Estructura \hyperlink{structCommand}{Command}, que contiene una cadena con el comando, y punteros al próximo comando y al previo. \hypertarget{command_8h_a19343a16b7123bbc937cdd45935dedcb}{\index{command.\-h@{command.\-h}!Pipe\-Command@{Pipe\-Command}}
+\index{Pipe\-Command@{Pipe\-Command}!command.h@{command.\-h}}
+\subsubsection[{Pipe\-Command}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Pipe\-Command}  {\bf Pipe\-Command}}}\label{command_8h_a19343a16b7123bbc937cdd45935dedcb}
+
+
+Tipo de datos \hyperlink{structPipeCommand}{Pipe\-Command}. 
+
+Estructura \hyperlink{structCommand}{Command}, que contiene un array de cadenas con el comando separado en distintas posiciones, y punteros al próximo comando y al previo. 
+
+\subsection{Function Documentation}
+\hypertarget{command_8h_ae8261ade6cc99a31700d96b7a0464d33}{\index{command.\-h@{command.\-h}!create\-Command@{create\-Command}}
+\index{create\-Command@{create\-Command}!command.h@{command.\-h}}
+\subsubsection[{create\-Command}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Command}$\ast$ create\-Command (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{}
+\end{DoxyParamCaption}
+)}}\label{command_8h_ae8261ade6cc99a31700d96b7a0464d33}
+
+
+Tipo de datos \hyperlink{structPipeCommand}{Pipe\-Command}. 
+
+Estructura \hyperlink{structCommand}{Command}, que contiene un array de cadenas con el comando separado en distintas posiciones, y punteros al próximo comando y al previo. \begin{DoxyReturn}{Returns}
+\hyperlink{structCommand}{Command} $\ast$, el comando creado para ser añadido a la lista. 
+\end{DoxyReturn}
+\hypertarget{command_8h_a8006fcf75821a0bf3281c6ade35d6e83}{\index{command.\-h@{command.\-h}!equals@{equals}}
+\index{equals@{equals}!command.h@{command.\-h}}
+\subsubsection[{equals}]{\setlength{\rightskip}{0pt plus 5cm}int equals (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Command} $\ast$}]{, }
+\item[{struct {\bf Command} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}\label{command_8h_a8006fcf75821a0bf3281c6ade35d6e83}
+
+
+Tipo de datos \hyperlink{structPipeCommand}{Pipe\-Command}. 
+
+Estructura \hyperlink{structCommand}{Command}, que contiene un array de cadenas con el comando separado en distintas posiciones, y punteros al próximo comando y al previo. \begin{DoxyNote}{Note}
+La última modificación el segundo comando no se utiliza, ya que siempre utilizamos el último de la lista 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+0, si los comandos son iguales, 1 en otro caso. 
+\end{DoxyReturn}

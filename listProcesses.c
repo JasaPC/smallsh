@@ -29,6 +29,7 @@ void deleteProcess(int pid){
 	Process * p = (struct Process *)malloc(sizeof(struct Process *));
 	p = lista->first;
 	for (; p != NULL; p = p->nextProcess){
+		//Si el pid coincide con p
 		if (p->PID == pid){
 			if (p == lista->first) 
 				lista->first = p->nextProcess;
@@ -38,17 +39,18 @@ void deleteProcess(int pid){
 				p->nextProcess->prevProcess = p->prevProcess;
 			if (p->prevProcess != NULL)
 				p->prevProcess->nextProcess = p->nextProcess;
-			
+
 			lista->tam--;
 			if (lista->tam == 0){
 				free(lista->first);
 				free(lista->last);
 				lista->first = lista->last = NULL;
 			}
+			free(p);
+			return;
 		}
-
-
 	}
+	
 	
 
 }
@@ -77,7 +79,7 @@ void showProcesses() {
 	if (lista != NULL && lista->tam > 0){
 		int i = 0;
 		printf("---------SHOW PROCESSES----------\n");
-		printf("Command\t\t%24s\t\t\tActive Time\t\tLeft Time \n","Init Date");
+		printf("Command/IP\t\t%24s\t\t\tActive Time\t\tLeft Time \n","Init Date");
 		struct Process * process = (struct Process *) malloc(sizeof(struct Process));
 		process = lista->first;
 		if (process != NULL && lista->tam > 0){
@@ -95,7 +97,7 @@ void showProcesses() {
 	} else {
 		printf("---------NO PROCESSES---------\n");
 	}
-	fflush(stdout);
+	//fflush(stdout);
 }
 
 /** Mata todos los procesos cuya alarma haya sido sobrepasada */
@@ -133,7 +135,6 @@ void deleteAll(){
 
 /** Esta función obtiene el proceso con la alarma con el menor tiempo de vida **/
 
-
 int getFirstAlarm(){
 	int time = -1;
 	int first = 0;
@@ -149,6 +150,23 @@ int getFirstAlarm(){
 	}
 	return time;
 }
+
+
+/** Esta función elimina todos los procesos de la lista**/
+
+void freeProcesses(){
+	while (lista->last != NULL){
+		lista->last = lista->last->prevProcess;
+		if (lista->last != NULL){
+			free(lista->last->nextProcess);
+			lista->last->nextProcess = NULL;
+		} else{
+			free(lista->first);
+			lista->first = NULL;
+		}
+		lista->tam--;
+	}
+} //Elimina todos los procesos de la lista
 
 
 

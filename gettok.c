@@ -1,7 +1,7 @@
 /* -*- mode: C; c-basic-offset: 4; -*- */
 #include "smallsh.h"
 
-static char * blanco = "                                                                                ";
+static char * blanco = "                  ";
 
 /* Mantener contento al compilador */
 extern int yy_scan_string();
@@ -48,7 +48,7 @@ userin()
     struct Buffer *buf;
     struct Buffer pattern;
 
-    fflush(stdin);
+   
     prompt = user_getPrompt(); //usa la función de userfn.h
     printf("%s ", prompt);
     fflush(stdout);
@@ -118,8 +118,7 @@ userin()
                 liberaBuffer (&pattern);
                 printf("\r%s\r%s %s", blanco, prompt, buf->data);
             }
-            
-            fflush(stdout);
+        
 
             break;
 

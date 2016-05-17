@@ -6,9 +6,15 @@
  * sirve para separar unas ordenes de otras y el caracter '&' permite
  * una orden en background.
  */
+int pipeActive = 1; //pipe is not active
 void
 procline(struct TokBuf * tb) {
     char * arg[MAXARG + 1]; /* Array de palabras: orden + argumentos. */
+    int i;
+    for (i=0; i<tb->length; i++){
+        //arg[i] = (char *)malloc(100);
+        arg[i] = NULL;
+    }
     TokType toktype;        /* Tipo de token. */
     unsigned narg;          /* Número de argumentos leídos para la orden. */
     unsigned where;         /* El proceso se ejecutará en primer o segundo plano .*/
@@ -19,22 +25,29 @@ procline(struct TokBuf * tb) {
     }*/
     narg = 0;
     for (ntoken = 0; ntoken < tb->length; ntoken++) {
+        //printf("Número de tokens: %i\n", tb->length);
         switch(toktype = tb->tokens[ntoken].type) {
         case ARG:   /* Se ha leído un argumento. */
-            if (narg < MAXARG)
+            if (narg < MAXARG){
                 arg[narg++] = tb->tokens[ntoken].data;
+                printf("Añado token: %s\n", tb->tokens[ntoken].data);
+            }
             break;
         case ARROBA:{
             char * p = strtok(tb->tokens[ntoken].data,"@"); //Numero de segundos
             //printf("Lanzo el runcommand con alarma, tiempo : %i\n", atoi(p));
-            Command * c = (struct Command *)malloc(sizeof(Command));
-            c = (struct Command *)createCommand_Alarm(arg, strdup(tb->tokens[ntoken].data));
             //printf("Voy a añadir el comando a la lista\n");
-            if (c != NULL){
-                    addCommand(c);
-            }
             runcommand_alarm(arg, BACKGROUND, atoi(p));
             narg = 0;
+            break;
+        }
+        case PIPE:{
+            pipeActive = 0; //pipeLine is now active
+            //printf("Activo PIPE");
+            if (narg < MAXARG){
+                arg[narg++] = tb->tokens[ntoken].data;
+                //printf("Añado token: %s\n", tb->tokens[ntoken].data);
+            }
             break;
         }
         case EOL:
@@ -43,25 +56,25 @@ procline(struct TokBuf * tb) {
        
         case AND:
         case OR:
-            if (toktype == AMPERSAND){
-                    where = BACKGROUND;
-            } else where = FOREGROUND; 
-            if (narg != 0) {
-                arg[narg] = NULL; //Borra el EOL
-                Command * c = (struct Command *)malloc(sizeof(Command));
-                c = (struct Command *)createCommand(arg);
-                //showCommands();
-                //printf("Voy a añadir el comando a la lista\n");
-                if (c != NULL){
-                    addCommand(c);
+            if (pipeActive == 1) {
+                if (toktype == AMPERSAND){
+                        where = BACKGROUND;
+                } else where = FOREGROUND; 
+                if (narg != 0) {
+                    arg[narg] = NULL; //Borra el EOL
+                    //showCommands();
+                    //printf("Voy a añadir el comando a la lista\n");
+                    //showCommands();
+                    runcommand(arg, where);
                 }
-                showCommands();
-                //showCommands();
-                runcommand(arg, where);
+            } else {
+                if (narg != 0) {
+                    arg[narg] = "|"; //Borra el EOL
+                    arg[narg+1] = NULL;
+                    runcommand_pipe(arg);
+                }
             }
-            /* Seguir con la siguiente orden. Esto se da
-             * si se han introducido varias órdenes
-             * separadas por ';' o '&'. */
+            pipeActive = 1;
             narg = 0;
             break;
         default:

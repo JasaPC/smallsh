@@ -8,6 +8,7 @@ struct sigaction accion;
 sigset_t conjunto;
 int elem_actual = 0;
 char* comando_actual = NULL;
+char * orden_ = NULL;
 
 void tratamiento(int nsig, siginfo_t* info, void*nada)
 {
@@ -58,6 +59,7 @@ user_inicializar(void)
     initCommandsList();
     
     
+    
 }
 
 
@@ -67,6 +69,7 @@ user_finalizar(void)
     /* Vacío */
     free(lista);
     free(listCommands);
+    free(pipeCommands);
 
 }
 
@@ -106,6 +109,7 @@ user_getPrompt(void)
 
     /* Reservamos espacio de memoria para el prompt */
     char * prompt = malloc(6*sizeof(char) + strlen(time_char)*sizeof(char)+ strlen(login)*sizeof(char) + strlen(dir)*sizeof(char) + sizeof(int) + strlen(numProcesos)*sizeof(char));
+    //memset(prompt,â€™\0â€™, 6*sizeof(char) + strlen(time_char)*sizeof(char)+ strlen(login)*sizeof(char) + strlen(dir)*sizeof(char) + sizeof(int) + strlen(numProcesos)*sizeof(char));
     strcpy(prompt, "[#");
     strcat(prompt,  numProcesos);
     strcat(prompt, " ");
@@ -116,19 +120,15 @@ user_getPrompt(void)
     strcat(prompt, dir);
     strcat(prompt, "]");
     elem_actual = 0;
-    fflush(stdout);
     return prompt;
 }
 
 char *
 user_flecha(int direccion, const char* patron)
 {
-    //printf("Elemento actual: %i\n", elem_actual);
-     /* Implementación */
-    fflush(stdout);
-    if (elem_actual==0)
-        comando_actual = strdup(patron);
-
+    
+    limpiar_orden();
+    printf("\n");
     if (direccion == FLECHA_ARRIBA){
         if (elem_actual < listCommands->tam)
             elem_actual++;
@@ -136,25 +136,53 @@ user_flecha(int direccion, const char* patron)
         if (elem_actual > 0)
             elem_actual--;
     }
-
-    if (elem_actual == 0)
-        return strdup(comando_actual);
+    if (elem_actual != 0) { 
     /* Devolvemos el comando correspondiente */
-    Command * c = (struct Command *) malloc(sizeof(Command));
-    c = (struct Command *)getCommand(elem_actual);
-    char * orden = (char*)malloc(100);
-    strcat(orden, c->command);
-    strcat(orden, " ");
-    if (c->parameters != NULL)
-        strcat(orden, c->parameters);
-    return strdup(orden);
+        Command * c = (struct Command *)malloc(sizeof(Command));
+        c = (struct Command *)getCommand(elem_actual);
+        orden_ = (char *)calloc(strlen(c->command), sizeof(char));   
+        //memset(p, â€™\0â€™, strlen(c->command));
+        strcpy(orden_,c->command);
+        c = NULL;
+        return strdup(orden_);  
+    }
+    return NULL; 
 }
 
 void
 user_nueva_orden(const char * orden)
 {
-    /* Implementación */
+    //printf("Orden para crear comando: %s\n",orden);
 
+    Command * c = (struct Command *)malloc(sizeof(Command));
+    c = (struct Command *)createCommand(orden);
+    //printf("Comando creado: %s\n",c->command);
+    if (c != NULL){
+        addCommand(c);
+    }
+    //printf("Comando añadido a la lista: %s\n", c->command);
+    showCommands();
+   
+    /* Implementación */
+    if (comando_actual != NULL)
+        free(comando_actual);
+    comando_actual = NULL;
+    elem_actual = 0;
+    //printf("Termino user_nueva_orden\n");
+}
+
+void limpiar_orden(){
+    
+    if (orden_ != NULL){
+        int i;
+        for (i = 0; i<strlen(orden_);i++)
+            orden_[i] = '\0';
+        free(orden_);
+
+        //printf("Orden después de limpiar: %s", orden_);
+        orden_ = NULL;
+        fflush(stdout);
+    }
 }
 
 char *

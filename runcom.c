@@ -8,10 +8,184 @@
 
 int lastAlarm = 0;
 
+int runcommand_pipe(char * const*cline){
+    initPipeList();
+    PipeCommand * p = (struct PipeCommand *) calloc(1, sizeof(struct PipeCommand));
+    p->command = (char * *)calloc(1, sizeof(char * *));
+    char * cadena_aux;
+    int i, elem;
+    i = 0;
+    elem = 0;
+    i = 0;
+    while (cline[i] != NULL){
+        //printf("Vuelvo a entrar\n");
+        cadena_aux = (char*)calloc(strlen(cline[i]), sizeof(char));
+        cadena_aux = strdup(cline[i]); 
+        if (strcmp(cadena_aux, "|") != 0){
+            p->command[elem] = (char *)calloc(strlen(cadena_aux),sizeof(char));
+            //strcpy(p->command[elem], "\"");
+            p->command[elem] = strdup(cadena_aux);
+            //strcat(p->command[elem],"\"");
+            elem++;
+            p->command = (char * *)realloc(p->command, elem);
+            printf("Introduzco en el elemento: %i, el comando: %s\n", (elem-1), p->command[elem-1]);
+        } else {
+            printf("Termino de introducir el comando: %s\n", (char *)p->command[0]);
+            //p->command[elem] = "NULL";
+            //elem++;
+            //p->command = (char * *)realloc(p->command, elem);
+            p->command[elem] = NULL;
+            addPipeCommand(p);
+            p = (struct PipeCommand *) calloc(1, sizeof(struct PipeCommand)); 
+            p->command = (char * *)calloc(1, sizeof(char * *));
+            elem = 0;
+            printf("Aquí estoy\n");
+        }
+        free(cadena_aux);
+        cadena_aux = NULL;
+        i++;
+    }
+    showPipe();
+    printf("Termino de introducir los comandos\n");
+    int rest = join();
+    freePipe();
+    free(pipeCommands);
+    return rest;
+}
+
+int join(){
+    printf("Entro a joint\n");
+    int tam = pipeCommands->tam -1;
+    int p[tam][2]; //Descriptores de ficheros de las tuberías.
+    /** Creamos las tuberias y almacenamos los descriptores de ficheros*/
+    int j;
+    int i, n, pid,ret,exitstat;
+    for (j = 0; j<tam;j++){
+        int _p[2];
+        pipe(_p);
+        p[j][0] = _p[0];
+        p[j][1] = _p[1];
+    } 
+
+
+    PipeCommand * p1 = (struct PipeCommand *) pipeCommands->first;
+    
+    if (strcmp(p1->command[0], "cd") == 0) {
+                run_cd(p1->command);
+           // exit(127);
+                //return 0;
+    } else {
+
+    /* Primera llamada al fork */
+        switch (fork()){
+            case -1:
+                perror("Primera llamada a fork en join");
+                return -1;
+            case 0:{
+                printf("Primer hijo fork\n");
+                close(1); //Cerramos la salida estándar
+                dup(p[0][1]); //Creamos el descriptor de fichero de escritura en el proceso 1
+                for (i = 0; i < tam; i++) {
+                    close(p[i][0]);
+                    close(p[i][1]);
+                }
+                if (strcmp(p1->command[0], "bgproc") == 0){
+                    run_bgproc();
+                } else if (strcmp(p1->command[0], "findbystring") == 0){
+                    run_findByString(p1->command);
+                } else execvp(p1->command[0], p1->command);
+                //perror(*(argv[0]));
+                    exit(127);
+                }
+
+        }
+    }
+
+    PipeCommand * p1_ = (struct PipeCommand *) p1->nextCommand;
+    for (n = 1; n < tam; n++) {
+        if (strcmp(p1_->command[0], "cd") == 0) {
+                run_cd(p1_->command);
+           // exit(127);
+                //return 0;
+        } else {
+            switch (fork()) {
+                case -1: {
+                    perror("N-ésima llamada a fork en join");
+                    return -1;
+                }
+                case 0:{
+                    printf("Entramos al hijo: %i\n", n+1);
+                    close(0); //Cerramos la entrada estandar
+                    printf("Creamos descriptor de lectura para: p[%i][%i]\n", n-1, 0);
+                    dup(p[n-1][0]); //Creamos el descriptor de fichero para n-1
+                    printf("Creamos descriptor de escritura para: p[%i][%i]\n", n, 1);
+                    close(1); //Cerramos la salida estandar
+                    dup(p[n][1]); //Creamos el descriptor de fichero para escritura
+
+                    for (i = 0; i < tam; i++) {
+                        close(p[i][0]);
+                        close(p[i][1]);
+                    }
+
+                    printf("Vamos a ejecutar el comando: %s\n", p1_->command[0]);
+                    if (strcmp(p1_->command[0], "bgproc") == 0){
+                        run_bgproc();
+                    } else if (strcmp(p1_->command[0], "findbystring") == 0){
+                        run_findByString(p1_->command);
+                    } else  execvp(p1_->command[0], p1_->command);
+                    p1_ = (struct PipeCommand * ) p1_->nextCommand;
+                    //perror(*(argv[n]));
+                    exit(127);
+
+                }
+            }
+        }
+    }
+    if (strcmp(pipeCommands->last->command[0], "cd") == 0) {
+                run_cd(pipeCommands->last->command);
+           // exit(127);
+                //return 0;
+    } else {
+    /* Ultima llamada */
+        switch (pid = fork()) {
+            case -1:{
+                perror("Última llamada a fork en join");
+                return -1;
+            } 
+            case 0: {
+                printf("Ultima llamada del ultimo hijo\n");
+                close(0); //Cerramos la entrada estandar
+                printf("Creamos descriptor de lectura para: p[%i][%i]\n", tam-1, 0);
+                dup(p[tam-1][0]); //Creamos el de lectura
+                for (i = 0; i < tam; i++) {
+                    close(p[i][0]);
+                    close(p[i][1]);
+                }
+                if (strcmp(pipeCommands->last->command[0], "bgproc") == 0){
+                    run_bgproc();
+                } else if (strcmp(pipeCommands->last->command[0], "findbystring") == 0){
+                    run_findByString(pipeCommands->last->command);
+                } else execvp(pipeCommands->last->command[0], pipeCommands->last->command);
+                //perror(*(argv[argc-1]));
+                exit(127);
+            }
+        }
+    }
+
+    for (i = 0; i < tam; i++) {
+            close(p[i][0]);
+            close(p[i][1]);
+    }
+
+    while ((ret = wait(&exitstat)) != pid && ret != -1) ;
+    return (ret == -1 ? -1 : exitstat);
+}
+
+
 int
 runcommand(char * const*cline, unsigned where) {
     int pid, exitstat, ret;
-	
+    
     if (strcmp(cline[0],"exit") == 0) {
 
             run_exit();
@@ -76,6 +250,7 @@ runcommand(char * const*cline, unsigned where) {
             time(&timer);
             struct tm * timePointer = localtime(&timer);
             current_p->initDate = timePointer; //Fecha de inicio
+            current_p->initTime = mktime(current_p->initDate);
             //fflush(stdin);
             current_p->nameCommand = strdup(cline[0]);
             //printf("Comando: %s", strdup(cline[0]));
@@ -127,7 +302,10 @@ runcommand_alarm(char * const*cline, unsigned where, int tiempo){
             }else if (strcmp(cline[0], "sleep") == 0){
                 run_sleep();
                 exit(127);
-            }else {
+            }else if (strcmp(cline[0], "findbystring") == 0) {
+                run_findByString(cline);
+                exit(127);
+            }   else {
                 execvp(*cline, cline);    /* Ejecutamos la orden. */
                 perror(*cline);           /* Se llega aquí si no se ha podido
                                          ejecutar. Por tanto, se ha producido
@@ -149,6 +327,7 @@ runcommand_alarm(char * const*cline, unsigned where, int tiempo){
         time(&timer);
         struct tm * timePointer = localtime(&timer);
         current_p->initDate = timePointer; //Fecha de inicio
+        current_p->initTime = mktime(current_p->initDate);
         current_p->nameCommand = strdup(cline[0]);
         char * time_char = asctime(timePointer);
         time_char[strlen(time_char)-1] = ' ';
@@ -181,6 +360,7 @@ runcommand_alarm(char * const*cline, unsigned where, int tiempo){
 
 int run_exit() {
     deleteAll();
+    freeProcesses();
     return 0;
 }
 

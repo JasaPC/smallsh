@@ -1,0 +1,155 @@
+\hypertarget{process_8h}{\section{process.\-h File Reference}
+\label{process_8h}\index{process.\-h@{process.\-h}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structProcess}{Process}
+\begin{DoxyCompactList}\small\item\em Tipo de datos \hyperlink{structProcess}{Process}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structProcess}{Process} \hyperlink{process_8h_a095422aaedd60f678ef080ec9462ebd4}{Process}
+\begin{DoxyCompactList}\small\item\em Tipo de datos \hyperlink{structProcess}{Process}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{process_8h_a6fd95bcffcb178eccf0e9289cbde4086}{get\-Active\-Time} (const \hyperlink{structProcess}{Process} $\ast$)
+\begin{DoxyCompactList}\small\item\em Devuelve el tiempo activo de un proceso. \end{DoxyCompactList}\item 
+int \hyperlink{process_8h_acd12e2d7907d6b934f47220bdfded9a8}{get\-Time\-Left} (const \hyperlink{structProcess}{Process} $\ast$)
+\begin{DoxyCompactList}\small\item\em Devuelve el tiempo restante de un proceso. \end{DoxyCompactList}\item 
+int \hyperlink{process_8h_a6d6f8b9779bd29fd81f366b64cda6b8e}{get\-Alarm} (const \hyperlink{structProcess}{Process} $\ast$)
+\begin{DoxyCompactList}\small\item\em Indica si el proceso tiene una alarma activa. \end{DoxyCompactList}\item 
+int \hyperlink{process_8h_a225d4e12bebca78f7e9ca00847173292}{get\-Time\-Left\-Alarm} (const \hyperlink{structProcess}{Process} $\ast$)
+\item 
+void \hyperlink{process_8h_aac28c843f69cd62b988d38e99805b72e}{get\-Info} (const \hyperlink{structProcess}{Process} $\ast$)
+\begin{DoxyCompactList}\small\item\em Obtiene la información necesaria de un proceso. \end{DoxyCompactList}\item 
+void \hyperlink{process_8h_af94d2c1e00d8a4d3710f0891b3ec5f36}{set\-Alarm} (\hyperlink{structProcess}{Process} $\ast$)
+\begin{DoxyCompactList}\small\item\em Establece una alarma para un proceso. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+José Ángel 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+17 May 2016 
+\end{DoxyDate}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{process_8h_a095422aaedd60f678ef080ec9462ebd4}{\index{process.\-h@{process.\-h}!Process@{Process}}
+\index{Process@{Process}!process.h@{process.\-h}}
+\subsubsection[{Process}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Process}  {\bf Process}}}\label{process_8h_a095422aaedd60f678ef080ec9462ebd4}
+
+
+Tipo de datos \hyperlink{structProcess}{Process}. 
+
+Estructura \hyperlink{structProcess}{Process}, que identifica a un proceso junto con los campos necesarios, además de punteros a dos procesos (previo y siguiente) en caso de ser necesario su acceso. 
+
+\subsection{Function Documentation}
+\hypertarget{process_8h_a6fd95bcffcb178eccf0e9289cbde4086}{\index{process.\-h@{process.\-h}!get\-Active\-Time@{get\-Active\-Time}}
+\index{get\-Active\-Time@{get\-Active\-Time}!process.h@{process.\-h}}
+\subsubsection[{get\-Active\-Time}]{\setlength{\rightskip}{0pt plus 5cm}int get\-Active\-Time (
+\begin{DoxyParamCaption}
+\item[{const {\bf Process} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}\label{process_8h_a6fd95bcffcb178eccf0e9289cbde4086}
+
+
+Devuelve el tiempo activo de un proceso. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \hyperlink{structProcess}{Process}, el proceso del cual queremos obtener el tiempo que lleva activo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int, el tiempo que lleva activo 
+\end{DoxyReturn}
+\hypertarget{process_8h_a6d6f8b9779bd29fd81f366b64cda6b8e}{\index{process.\-h@{process.\-h}!get\-Alarm@{get\-Alarm}}
+\index{get\-Alarm@{get\-Alarm}!process.h@{process.\-h}}
+\subsubsection[{get\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}int get\-Alarm (
+\begin{DoxyParamCaption}
+\item[{const {\bf Process} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}\label{process_8h_a6d6f8b9779bd29fd81f366b64cda6b8e}
+
+
+Indica si el proceso tiene una alarma activa. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \hyperlink{structProcess}{Process}, el proceso del cual queremos ver si tiene alarma activa. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int, indica si tiene alarma (0) o no (1) 
+\end{DoxyReturn}
+\hypertarget{process_8h_aac28c843f69cd62b988d38e99805b72e}{\index{process.\-h@{process.\-h}!get\-Info@{get\-Info}}
+\index{get\-Info@{get\-Info}!process.h@{process.\-h}}
+\subsubsection[{get\-Info}]{\setlength{\rightskip}{0pt plus 5cm}void get\-Info (
+\begin{DoxyParamCaption}
+\item[{const {\bf Process} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}\label{process_8h_aac28c843f69cd62b988d38e99805b72e}
+
+
+Obtiene la información necesaria de un proceso. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \hyperlink{structProcess}{Process}, el proceso del cual queremos ver su información. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{process_8h_acd12e2d7907d6b934f47220bdfded9a8}{\index{process.\-h@{process.\-h}!get\-Time\-Left@{get\-Time\-Left}}
+\index{get\-Time\-Left@{get\-Time\-Left}!process.h@{process.\-h}}
+\subsubsection[{get\-Time\-Left}]{\setlength{\rightskip}{0pt plus 5cm}int get\-Time\-Left (
+\begin{DoxyParamCaption}
+\item[{const {\bf Process} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}\label{process_8h_acd12e2d7907d6b934f47220bdfded9a8}
+
+
+Devuelve el tiempo restante de un proceso. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \hyperlink{structProcess}{Process}, el proceso del cual queremos obtener el tiempo restante. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int, el tiempo restante 
+\end{DoxyReturn}
+\hypertarget{process_8h_a225d4e12bebca78f7e9ca00847173292}{\index{process.\-h@{process.\-h}!get\-Time\-Left\-Alarm@{get\-Time\-Left\-Alarm}}
+\index{get\-Time\-Left\-Alarm@{get\-Time\-Left\-Alarm}!process.h@{process.\-h}}
+\subsubsection[{get\-Time\-Left\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}int get\-Time\-Left\-Alarm (
+\begin{DoxyParamCaption}
+\item[{const {\bf Process} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}\label{process_8h_a225d4e12bebca78f7e9ca00847173292}
+\begin{DoxyNote}{Note}
+comprobar si se usa 
+\end{DoxyNote}
+\hypertarget{process_8h_af94d2c1e00d8a4d3710f0891b3ec5f36}{\index{process.\-h@{process.\-h}!set\-Alarm@{set\-Alarm}}
+\index{set\-Alarm@{set\-Alarm}!process.h@{process.\-h}}
+\subsubsection[{set\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}void set\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Process} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}\label{process_8h_af94d2c1e00d8a4d3710f0891b3ec5f36}
+
+
+Establece una alarma para un proceso. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \hyperlink{structProcess}{Process}, el proceso del cual vamos a establecer una alarma. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}

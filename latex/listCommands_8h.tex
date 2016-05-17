@@ -1,0 +1,214 @@
+\hypertarget{listCommands_8h}{\section{list\-Commands.\-h File Reference}
+\label{listCommands_8h}\index{list\-Commands.\-h@{list\-Commands.\-h}}
+}
+{\ttfamily \#include \char`\"{}command.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structListCommand}{List\-Command}
+\begin{DoxyCompactList}\small\item\em Tipo de datos \hyperlink{structListCommand}{List\-Command}. \end{DoxyCompactList}\item 
+struct \hyperlink{structListPipeCommand}{List\-Pipe\-Command}
+\begin{DoxyCompactList}\small\item\em Tipo de datos \hyperlink{structListPipeCommand}{List\-Pipe\-Command}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structListCommand}{List\-Command} \hyperlink{listCommands_8h_a6e0c520b13a6c749315abdc35926e2f7}{List\-Command}
+\begin{DoxyCompactList}\small\item\em Tipo de datos \hyperlink{structListCommand}{List\-Command}. \end{DoxyCompactList}\item 
+typedef struct \hyperlink{structListPipeCommand}{List\-Pipe\-Command} \hyperlink{listCommands_8h_ad8d14aa88828c06323bdd6528404af95}{List\-Pipe\-Command}
+\begin{DoxyCompactList}\small\item\em Tipo de datos \hyperlink{structListPipeCommand}{List\-Pipe\-Command}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{listCommands_8h_aa4a62bceea0c949806107c5e591ffe5f}{init\-Commands\-List} ()
+\begin{DoxyCompactList}\small\item\em Inicializa la lista de comandos list\-Commands. \end{DoxyCompactList}\item 
+void \hyperlink{listCommands_8h_a56693729c9feb721bbbccf7e18baae19}{init\-Pipe\-List} ()
+\begin{DoxyCompactList}\small\item\em Inicializa la lista de comandos de pipe pipe\-Commands. \end{DoxyCompactList}\item 
+void \hyperlink{listCommands_8h_a9ebad9bafbf7b4b52f4406a248ff395b}{add\-Command} (\hyperlink{structCommand}{Command} $\ast$)
+\begin{DoxyCompactList}\small\item\em Añade un comando \hyperlink{structCommand}{Command} a la lista list\-Commands. \end{DoxyCompactList}\item 
+void \hyperlink{listCommands_8h_aa603cfe4cb66713752d55270a4639346}{add\-Pipe\-Command} (\hyperlink{structPipeCommand}{Pipe\-Command} $\ast$)
+\begin{DoxyCompactList}\small\item\em Añade un comando \hyperlink{structPipeCommand}{Pipe\-Command} a la lista pipe\-Commands. \end{DoxyCompactList}\item 
+void \hyperlink{listCommands_8h_a25a5ec20b4563a49bfffc9430de73fb8}{show\-Commands} ()
+\begin{DoxyCompactList}\small\item\em Muestra el contenido de la lista list\-Commands. \end{DoxyCompactList}\item 
+void \hyperlink{listCommands_8h_afd43dc7f71a076340b547ee60031cae2}{show\-Pipe} ()
+\begin{DoxyCompactList}\small\item\em Muestra el contenido de la lista pipe\-Commands. \end{DoxyCompactList}\item 
+void \hyperlink{listCommands_8h_afbbacb9171a9277199e284d8eaea52be}{free\-List} ()
+\begin{DoxyCompactList}\small\item\em Libera el contenido de la lista list\-Commands. \end{DoxyCompactList}\item 
+void \hyperlink{listCommands_8h_a4c0ce860f30ab340066c34e79cf3371f}{free\-Pipe} ()
+\begin{DoxyCompactList}\small\item\em Libera el contenido de la lista pipe\-Commands. \end{DoxyCompactList}\item 
+\hypertarget{listCommands_8h_a247397b4b092fd9dd14b62a961b1bd44}{\hyperlink{structListCommand}{List\-Command} $\ast$ {\bfseries get\-Commands} ()}\label{listCommands_8h_a247397b4b092fd9dd14b62a961b1bd44}
+
+\item 
+\hypertarget{listCommands_8h_a5710202952171a178f36662ca9d252c0}{int {\bfseries get\-Commands\-Tam} ()}\label{listCommands_8h_a5710202952171a178f36662ca9d252c0}
+
+\item 
+\hyperlink{structCommand}{Command} $\ast$ \hyperlink{listCommands_8h_a445eb1db530fbc0123803ccc67dd172f}{get\-Command} (int)
+\begin{DoxyCompactList}\small\item\em Obtiene el comando correspondiente al elemento actual. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{listCommands_8h_a78dcbd26c6f26e384874de4608b16130}{\hyperlink{structListCommand}{List\-Command} $\ast$ {\bfseries list\-Commands}}\label{listCommands_8h_a78dcbd26c6f26e384874de4608b16130}
+
+\item 
+\hypertarget{listCommands_8h_a4dd9ceaa843d92798294cd5a5f2efa05}{\hyperlink{structListPipeCommand}{List\-Pipe\-Command} $\ast$ {\bfseries pipe\-Commands}}\label{listCommands_8h_a4dd9ceaa843d92798294cd5a5f2efa05}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+José Ángel 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+17 May 2016 
+\end{DoxyDate}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{listCommands_8h_a6e0c520b13a6c749315abdc35926e2f7}{\index{list\-Commands.\-h@{list\-Commands.\-h}!List\-Command@{List\-Command}}
+\index{List\-Command@{List\-Command}!listCommands.h@{list\-Commands.\-h}}
+\subsubsection[{List\-Command}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf List\-Command}  {\bf List\-Command}}}\label{listCommands_8h_a6e0c520b13a6c749315abdc35926e2f7}
+
+
+Tipo de datos \hyperlink{structListCommand}{List\-Command}. 
+
+Estructura \hyperlink{structListCommand}{List\-Command}, que contiene punteros al primer y último elemento, y el tamaño de la lista. \hypertarget{listCommands_8h_ad8d14aa88828c06323bdd6528404af95}{\index{list\-Commands.\-h@{list\-Commands.\-h}!List\-Pipe\-Command@{List\-Pipe\-Command}}
+\index{List\-Pipe\-Command@{List\-Pipe\-Command}!listCommands.h@{list\-Commands.\-h}}
+\subsubsection[{List\-Pipe\-Command}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf List\-Pipe\-Command}  {\bf List\-Pipe\-Command}}}\label{listCommands_8h_ad8d14aa88828c06323bdd6528404af95}
+
+
+Tipo de datos \hyperlink{structListPipeCommand}{List\-Pipe\-Command}. 
+
+Estructura \hyperlink{structListPipeCommand}{List\-Pipe\-Command}, que contiene punteros al primer y último elemento, y el tamaño de la lista. 
+
+\subsection{Function Documentation}
+\hypertarget{listCommands_8h_a9ebad9bafbf7b4b52f4406a248ff395b}{\index{list\-Commands.\-h@{list\-Commands.\-h}!add\-Command@{add\-Command}}
+\index{add\-Command@{add\-Command}!listCommands.h@{list\-Commands.\-h}}
+\subsubsection[{add\-Command}]{\setlength{\rightskip}{0pt plus 5cm}void add\-Command (
+\begin{DoxyParamCaption}
+\item[{{\bf Command} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}\label{listCommands_8h_a9ebad9bafbf7b4b52f4406a248ff395b}
+
+
+Añade un comando \hyperlink{structCommand}{Command} a la lista list\-Commands. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{listCommands_8h_aa603cfe4cb66713752d55270a4639346}{\index{list\-Commands.\-h@{list\-Commands.\-h}!add\-Pipe\-Command@{add\-Pipe\-Command}}
+\index{add\-Pipe\-Command@{add\-Pipe\-Command}!listCommands.h@{list\-Commands.\-h}}
+\subsubsection[{add\-Pipe\-Command}]{\setlength{\rightskip}{0pt plus 5cm}void add\-Pipe\-Command (
+\begin{DoxyParamCaption}
+\item[{{\bf Pipe\-Command} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}\label{listCommands_8h_aa603cfe4cb66713752d55270a4639346}
+
+
+Añade un comando \hyperlink{structPipeCommand}{Pipe\-Command} a la lista pipe\-Commands. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{listCommands_8h_afbbacb9171a9277199e284d8eaea52be}{\index{list\-Commands.\-h@{list\-Commands.\-h}!free\-List@{free\-List}}
+\index{free\-List@{free\-List}!listCommands.h@{list\-Commands.\-h}}
+\subsubsection[{free\-List}]{\setlength{\rightskip}{0pt plus 5cm}void free\-List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{listCommands_8h_afbbacb9171a9277199e284d8eaea52be}
+
+
+Libera el contenido de la lista list\-Commands. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{listCommands_8h_a4c0ce860f30ab340066c34e79cf3371f}{\index{list\-Commands.\-h@{list\-Commands.\-h}!free\-Pipe@{free\-Pipe}}
+\index{free\-Pipe@{free\-Pipe}!listCommands.h@{list\-Commands.\-h}}
+\subsubsection[{free\-Pipe}]{\setlength{\rightskip}{0pt plus 5cm}void free\-Pipe (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{listCommands_8h_a4c0ce860f30ab340066c34e79cf3371f}
+
+
+Libera el contenido de la lista pipe\-Commands. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{listCommands_8h_a445eb1db530fbc0123803ccc67dd172f}{\index{list\-Commands.\-h@{list\-Commands.\-h}!get\-Command@{get\-Command}}
+\index{get\-Command@{get\-Command}!listCommands.h@{list\-Commands.\-h}}
+\subsubsection[{get\-Command}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Command}$\ast$ get\-Command (
+\begin{DoxyParamCaption}
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}\label{listCommands_8h_a445eb1db530fbc0123803ccc67dd172f}
+
+
+Obtiene el comando correspondiente al elemento actual. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em el} & entero del elemento a ser buscado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{structCommand}{Command}, el comando encontrado o N\-U\-L\-L si no se encuentra. 
+\end{DoxyReturn}
+\hypertarget{listCommands_8h_aa4a62bceea0c949806107c5e591ffe5f}{\index{list\-Commands.\-h@{list\-Commands.\-h}!init\-Commands\-List@{init\-Commands\-List}}
+\index{init\-Commands\-List@{init\-Commands\-List}!listCommands.h@{list\-Commands.\-h}}
+\subsubsection[{init\-Commands\-List}]{\setlength{\rightskip}{0pt plus 5cm}void init\-Commands\-List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{listCommands_8h_aa4a62bceea0c949806107c5e591ffe5f}
+
+
+Inicializa la lista de comandos list\-Commands. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{listCommands_8h_a56693729c9feb721bbbccf7e18baae19}{\index{list\-Commands.\-h@{list\-Commands.\-h}!init\-Pipe\-List@{init\-Pipe\-List}}
+\index{init\-Pipe\-List@{init\-Pipe\-List}!listCommands.h@{list\-Commands.\-h}}
+\subsubsection[{init\-Pipe\-List}]{\setlength{\rightskip}{0pt plus 5cm}void init\-Pipe\-List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{listCommands_8h_a56693729c9feb721bbbccf7e18baae19}
+
+
+Inicializa la lista de comandos de pipe pipe\-Commands. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{listCommands_8h_a25a5ec20b4563a49bfffc9430de73fb8}{\index{list\-Commands.\-h@{list\-Commands.\-h}!show\-Commands@{show\-Commands}}
+\index{show\-Commands@{show\-Commands}!listCommands.h@{list\-Commands.\-h}}
+\subsubsection[{show\-Commands}]{\setlength{\rightskip}{0pt plus 5cm}void show\-Commands (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{listCommands_8h_a25a5ec20b4563a49bfffc9430de73fb8}
+
+
+Muestra el contenido de la lista list\-Commands. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{listCommands_8h_afd43dc7f71a076340b547ee60031cae2}{\index{list\-Commands.\-h@{list\-Commands.\-h}!show\-Pipe@{show\-Pipe}}
+\index{show\-Pipe@{show\-Pipe}!listCommands.h@{list\-Commands.\-h}}
+\subsubsection[{show\-Pipe}]{\setlength{\rightskip}{0pt plus 5cm}void show\-Pipe (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{listCommands_8h_afd43dc7f71a076340b547ee60031cae2}
+
+
+Muestra el contenido de la lista pipe\-Commands. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}

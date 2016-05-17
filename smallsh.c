@@ -25,6 +25,7 @@ main(int argc, char **argv)
         free (tb);
         liberaBuffer(buf);
         free (buf);
+
     }
 
     /* Restaurar el modo de la entrada */

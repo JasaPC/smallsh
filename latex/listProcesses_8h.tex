@@ -1,0 +1,202 @@
+\hypertarget{listProcesses_8h}{\section{list\-Processes.\-h File Reference}
+\label{listProcesses_8h}\index{list\-Processes.\-h@{list\-Processes.\-h}}
+}
+{\ttfamily \#include \char`\"{}process.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structListProcess}{List\-Process}
+\begin{DoxyCompactList}\small\item\em Tipo de datos \hyperlink{structListProcess}{List\-Process}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structListProcess}{List\-Process} \hyperlink{listProcesses_8h_a881847d1fd8f0983bf6d2c16a616071b}{List\-Process}
+\begin{DoxyCompactList}\small\item\em Tipo de datos \hyperlink{structListProcess}{List\-Process}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{listProcesses_8h_a64ae0e46d2b0497d9fb7cb774dc675e8}{init\-List} ()
+\begin{DoxyCompactList}\small\item\em Inicializa la lista de procesos lista. \end{DoxyCompactList}\item 
+void \hyperlink{listProcesses_8h_a526d6efe2270fd4731d11a79d6a49792}{add\-Process} (\hyperlink{structProcess}{Process} $\ast$)
+\begin{DoxyCompactList}\small\item\em Añade un proceso \hyperlink{structProcess}{Process} a la lista lista. \end{DoxyCompactList}\item 
+void \hyperlink{listProcesses_8h_acbb5ff08a2ab00f9bcdb17342e429b0b}{delete\-Process} (int pid)
+\begin{DoxyCompactList}\small\item\em Elimina un proceso de la lista de procesos. \end{DoxyCompactList}\item 
+\hyperlink{structProcess}{Process} $\ast$ \hyperlink{listProcesses_8h_a0c5be05fd514d44df8882c71302f0684}{get\-Process} (int pid)
+\begin{DoxyCompactList}\small\item\em Obtiene a un proceso de la lista de procesos. \end{DoxyCompactList}\item 
+void \hyperlink{listProcesses_8h_a03a8b025d7564647783fcbf3c202048b}{show\-Processes} ()
+\begin{DoxyCompactList}\small\item\em Muestra el contenido de la lista de procesos. \end{DoxyCompactList}\item 
+void \hyperlink{listProcesses_8h_a83323779fca9eb76204d1966f9bc0a52}{kill\-Alarm} ()
+\begin{DoxyCompactList}\small\item\em Mata los procesos cuya alarma ha sido sobrepasada. \end{DoxyCompactList}\item 
+int \hyperlink{listProcesses_8h_add7375a677ab6d690b1cafadf4ab7f72}{get\-First\-Alarm} ()
+\begin{DoxyCompactList}\small\item\em Obtiene la siguiente alarma que va a ser activada. \end{DoxyCompactList}\item 
+void \hyperlink{listProcesses_8h_a68ae7378c8581ca7c3f11de35bfbf6df}{delete\-All} ()
+\begin{DoxyCompactList}\small\item\em Mata a todos los procesos de la lista de procesos. \end{DoxyCompactList}\item 
+void \hyperlink{listProcesses_8h_ad6ec0837cdb92f05a4b3819c15aaa15d}{free\-Processes} ()
+\begin{DoxyCompactList}\small\item\em Elimina todos los procesos de la lista. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{listProcesses_8h_ab6aec310f83e5e7a8e3cb5343bae266f}{\hyperlink{structListProcess}{List\-Process} $\ast$ {\bfseries lista}}\label{listProcesses_8h_ab6aec310f83e5e7a8e3cb5343bae266f}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+José Ángel 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+17 May 2016 
+\end{DoxyDate}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{listProcesses_8h_a881847d1fd8f0983bf6d2c16a616071b}{\index{list\-Processes.\-h@{list\-Processes.\-h}!List\-Process@{List\-Process}}
+\index{List\-Process@{List\-Process}!listProcesses.h@{list\-Processes.\-h}}
+\subsubsection[{List\-Process}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf List\-Process}  {\bf List\-Process}}}\label{listProcesses_8h_a881847d1fd8f0983bf6d2c16a616071b}
+
+
+Tipo de datos \hyperlink{structListProcess}{List\-Process}. 
+
+Estructura \hyperlink{structListProcess}{List\-Process}, que contiene punteros al primer y último elemento, y el tamaño de la lista. \begin{DoxyNote}{Note}
+, comprobar si utilizamos el name\-Command. 
+\end{DoxyNote}
+
+
+\subsection{Function Documentation}
+\hypertarget{listProcesses_8h_a526d6efe2270fd4731d11a79d6a49792}{\index{list\-Processes.\-h@{list\-Processes.\-h}!add\-Process@{add\-Process}}
+\index{add\-Process@{add\-Process}!listProcesses.h@{list\-Processes.\-h}}
+\subsubsection[{add\-Process}]{\setlength{\rightskip}{0pt plus 5cm}void add\-Process (
+\begin{DoxyParamCaption}
+\item[{{\bf Process} $\ast$}]{}
+\end{DoxyParamCaption}
+)}}\label{listProcesses_8h_a526d6efe2270fd4731d11a79d6a49792}
+
+
+Añade un proceso \hyperlink{structProcess}{Process} a la lista lista. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{listProcesses_8h_a68ae7378c8581ca7c3f11de35bfbf6df}{\index{list\-Processes.\-h@{list\-Processes.\-h}!delete\-All@{delete\-All}}
+\index{delete\-All@{delete\-All}!listProcesses.h@{list\-Processes.\-h}}
+\subsubsection[{delete\-All}]{\setlength{\rightskip}{0pt plus 5cm}void delete\-All (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{listProcesses_8h_a68ae7378c8581ca7c3f11de35bfbf6df}
+
+
+Mata a todos los procesos de la lista de procesos. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{listProcesses_8h_acbb5ff08a2ab00f9bcdb17342e429b0b}{\index{list\-Processes.\-h@{list\-Processes.\-h}!delete\-Process@{delete\-Process}}
+\index{delete\-Process@{delete\-Process}!listProcesses.h@{list\-Processes.\-h}}
+\subsubsection[{delete\-Process}]{\setlength{\rightskip}{0pt plus 5cm}void delete\-Process (
+\begin{DoxyParamCaption}
+\item[{int}]{pid}
+\end{DoxyParamCaption}
+)}}\label{listProcesses_8h_acbb5ff08a2ab00f9bcdb17342e429b0b}
+
+
+Elimina un proceso de la lista de procesos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pid,el} & entero del elemento a ser eliminado (pid) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{listProcesses_8h_ad6ec0837cdb92f05a4b3819c15aaa15d}{\index{list\-Processes.\-h@{list\-Processes.\-h}!free\-Processes@{free\-Processes}}
+\index{free\-Processes@{free\-Processes}!listProcesses.h@{list\-Processes.\-h}}
+\subsubsection[{free\-Processes}]{\setlength{\rightskip}{0pt plus 5cm}void free\-Processes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{listProcesses_8h_ad6ec0837cdb92f05a4b3819c15aaa15d}
+
+
+Elimina todos los procesos de la lista. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+Esta función elimina todos los procesos de la lista \hypertarget{listProcesses_8h_add7375a677ab6d690b1cafadf4ab7f72}{\index{list\-Processes.\-h@{list\-Processes.\-h}!get\-First\-Alarm@{get\-First\-Alarm}}
+\index{get\-First\-Alarm@{get\-First\-Alarm}!listProcesses.h@{list\-Processes.\-h}}
+\subsubsection[{get\-First\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}int get\-First\-Alarm (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{listProcesses_8h_add7375a677ab6d690b1cafadf4ab7f72}
+
+
+Obtiene la siguiente alarma que va a ser activada. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+Esta función obtiene el proceso con la alarma con el menor tiempo de vida \hypertarget{listProcesses_8h_a0c5be05fd514d44df8882c71302f0684}{\index{list\-Processes.\-h@{list\-Processes.\-h}!get\-Process@{get\-Process}}
+\index{get\-Process@{get\-Process}!listProcesses.h@{list\-Processes.\-h}}
+\subsubsection[{get\-Process}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Process}$\ast$ get\-Process (
+\begin{DoxyParamCaption}
+\item[{int}]{pid}
+\end{DoxyParamCaption}
+)}}\label{listProcesses_8h_a0c5be05fd514d44df8882c71302f0684}
+
+
+Obtiene a un proceso de la lista de procesos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pid,el} & entero del elemento a ser buscado (pid) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{structProcess}{Process}, el proceso. 
+\end{DoxyReturn}
+\hypertarget{listProcesses_8h_a64ae0e46d2b0497d9fb7cb774dc675e8}{\index{list\-Processes.\-h@{list\-Processes.\-h}!init\-List@{init\-List}}
+\index{init\-List@{init\-List}!listProcesses.h@{list\-Processes.\-h}}
+\subsubsection[{init\-List}]{\setlength{\rightskip}{0pt plus 5cm}void init\-List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{listProcesses_8h_a64ae0e46d2b0497d9fb7cb774dc675e8}
+
+
+Inicializa la lista de procesos lista. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{listProcesses_8h_a83323779fca9eb76204d1966f9bc0a52}{\index{list\-Processes.\-h@{list\-Processes.\-h}!kill\-Alarm@{kill\-Alarm}}
+\index{kill\-Alarm@{kill\-Alarm}!listProcesses.h@{list\-Processes.\-h}}
+\subsubsection[{kill\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}void kill\-Alarm (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{listProcesses_8h_a83323779fca9eb76204d1966f9bc0a52}
+
+
+Mata los procesos cuya alarma ha sido sobrepasada. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+Mata todos los procesos cuya alarma haya sido sobrepasada \hypertarget{listProcesses_8h_a03a8b025d7564647783fcbf3c202048b}{\index{list\-Processes.\-h@{list\-Processes.\-h}!show\-Processes@{show\-Processes}}
+\index{show\-Processes@{show\-Processes}!listProcesses.h@{list\-Processes.\-h}}
+\subsubsection[{show\-Processes}]{\setlength{\rightskip}{0pt plus 5cm}void show\-Processes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{listProcesses_8h_a03a8b025d7564647783fcbf3c202048b}
+
+
+Muestra el contenido de la lista de procesos. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}

@@ -2,11 +2,15 @@
 
 int getActiveTime(const Process * p){
 	//Fecha actual menos la fecha en la que fue lanzado
-	return time(NULL) - mktime(p->initDate) ; //time(NULL) es el tiempo en segundos
+	if (time(NULL) > p->initTime)
+		return (time(NULL) - p->initTime);
+	else return (p->initTime - time(NULL)); //time(NULL) es el tiempo en segundos
 }
 
 int getTimeLeft(const Process * p){
 	//El tiempo que le queda al proceso, es el tiempo actual - (fecha de Inicio + timeLife).
+	//Puede pasar que al crear el proceso, el tiempo actual sea igual al initData y por tanto
+	//la operación daría un resultado negativo (en ese caso lo establecemos a 0.)
 	if (time(NULL) > ((mktime(p->initDate) + p->timeLife))){
 		return 0;
 	} else {

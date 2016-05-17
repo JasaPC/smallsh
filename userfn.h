@@ -82,5 +82,5 @@ void user_nueva_orden(const char * orden);
 char * user_tabulador(const char * parte, unsigned numero, unsigned numtab);
 
 void alarm_r(int); //Función de tratamiento de alarmas
-
+void limpiar_orden();
 #endif
