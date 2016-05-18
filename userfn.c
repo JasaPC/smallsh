@@ -97,8 +97,6 @@ user_getPrompt(void)
 
     getcwd(dir, *tam);
 
-    printf("Directorio: %s\n",dir);
-
     /* Tiempo */
     time_t timer; //Current calendar time as a time_t object
     time(&timer);

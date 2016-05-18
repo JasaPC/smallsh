@@ -26,7 +26,7 @@ void addProcess(Process * p1) {
 }
 
 void deleteProcess(int pid){
-	Process * p = (struct Process *)malloc(sizeof(struct Process *));
+	Process * p = (struct Process *)malloc(sizeof(struct Process));
 	p = lista->first;
 	for (; p != NULL; p = p->nextProcess){
 		//Si el pid coincide con p
@@ -46,7 +46,8 @@ void deleteProcess(int pid){
 				free(lista->last);
 				lista->first = lista->last = NULL;
 			}
-			free(p);
+			//free(p);
+			//p = NULL;
 			return;
 		}
 	}
@@ -80,24 +81,18 @@ void showProcesses() {
 		int i = 0;
 		printf("---------SHOW PROCESSES----------\n");
 		printf("Command/IP\t\t%24s\t\t\tActive Time\t\tLeft Time \n","Init Date");
-		struct Process * process = (struct Process *) malloc(sizeof(struct Process));
-		process = lista->first;
+		Process * process = lista->first;
 		if (process != NULL && lista->tam > 0){
 			for (; process != NULL; process = process->nextProcess) {
-				//fflush(stdin);
-				//printf("Muestro proceso con orden: %s\n", strdup(process->nameCommand));
 				if (process != NULL){
 					getInfo(process);
 					i++;
 				} else return;
 			}
-			//free(process);
-			process = NULL;
 		} else return;
 	} else {
 		printf("---------NO PROCESSES---------\n");
 	}
-	//fflush(stdout);
 }
 
 /** Mata todos los procesos cuya alarma haya sido sobrepasada */
@@ -111,7 +106,6 @@ void killAlarm(){
 			if (process->alarmActive == 0 && getTimeLeft(process) <= 0){
 				kill(process->PID, SIGKILL); //Lanzamos al proceso con PID, la señal SIGKILL
 				usleep(1);
-				pause();
 			}
 		}
 	}

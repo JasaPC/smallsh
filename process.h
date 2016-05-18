@@ -54,7 +54,7 @@ int getTimeLeftAlarm(const Process *);
  * @param, Process, el proceso del cual queremos ver su información.
  * @return
  */
-void getInfo(const Process *);
+void getInfo(Process *);
 /**
  * @brief Establece una alarma para un proceso.
  * @param, Process, el proceso del cual vamos a establecer una alarma.

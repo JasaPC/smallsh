@@ -16,8 +16,8 @@
  */
 
 typedef struct ListCommand {
-	struct Command * first;
-	struct Command * last; //Primer proceso
+	struct Command * first; //Primer comando de la lista de comandos.
+	struct Command * last; //Último comando de la lista de comandos.
 	int tam; 
 } ListCommand;
 
@@ -30,8 +30,8 @@ typedef struct ListCommand {
  */
 
 typedef struct ListPipeCommand {
-	struct PipeCommand * first;
-	struct PipeCommand * last; //Primer proceso
+	struct PipeCommand * first;//Primer comando del pipe.
+	struct PipeCommand * last; //Último comando del pipe.
 	int tam; 
 } ListPipeCommand;
 
