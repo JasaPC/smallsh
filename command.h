@@ -30,7 +30,6 @@ typedef struct Command {
  */
 
 typedef struct PipeCommand{
-	//char * command; //Comando de la orden
 	char * * command ; //Array de comandos
 	struct PipeCommand * nextCommand;
 	struct PipeCommand * prevCommand;

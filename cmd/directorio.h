@@ -7,7 +7,7 @@
  * @date 17 May 2016
  */
 
-void listar(char *directorioActual, int n, char *string);
+unsigned listar(char *directorioActual, int n, char *string);
 unsigned cuentaStringArchivo(char *nombreArchivo, int n, char *string);
 
 #endif 

@@ -150,14 +150,14 @@ void freeList(){
 
 void freePipe(){
 	while (pipeCommands->last != NULL){
-		free(pipeCommands->last->command);
+		//free(pipeCommands->last->command);
 		pipeCommands->last->command = NULL;
 		pipeCommands->last = pipeCommands->last->prevCommand;
 		if (pipeCommands->last != NULL){
-			free(pipeCommands->last->nextCommand);
+			//free(pipeCommands->last->nextCommand);
 			pipeCommands->last->nextCommand = NULL;
 		} else{
-			free(pipeCommands->first);
+			//free(pipeCommands->first);
 			pipeCommands->first = NULL;
 		}
 		pipeCommands->tam--;

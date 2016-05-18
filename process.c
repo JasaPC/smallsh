@@ -11,10 +11,10 @@ int getTimeLeft(const Process * p){
 	//El tiempo que le queda al proceso, es el tiempo actual - (fecha de Inicio + timeLife).
 	//Puede pasar que al crear el proceso, el tiempo actual sea igual al initData y por tanto
 	//la operación daría un resultado negativo (en ese caso lo establecemos a 0.)
-	if (time(NULL) > ((mktime(p->initDate) + p->timeLife))){
+	if (time(NULL) > (p->initTime + p->timeLife)){
 		return 0;
 	} else {
-		return (mktime(p->initDate) + p->timeLife - time(NULL));
+		return (p->initTime + p->timeLife - time(NULL));
 
 	}
 	
@@ -25,7 +25,7 @@ int getAlarm(const Process * p){
 	return p->alarmActive;
 }
 
-void getInfo(const Process * p){
+void getInfo(Process * p){
 	//Obtiene información sobre el proceso
 	if (p != NULL) {
 	    char * time_char = asctime(p->initDate);

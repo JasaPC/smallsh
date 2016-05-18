@@ -18,9 +18,9 @@
 
 typedef struct ListProcess {
 	char * nameCommand; //Nombre de la orden
-	struct Process * first;
-	struct Process * last; //Primer proceso
-	int tam; 
+	struct Process * first;//Primer proceso
+	struct Process * last; //Último proceso
+	int tam; //Tamaño de la Lista
 } ListProcess;
 
 ListProcess * lista;

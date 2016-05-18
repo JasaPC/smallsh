@@ -1,6 +1,6 @@
 #include "../smallsh.h"
 
-void listar(char *directorioActual, int n, char *string){
+unsigned listar(char *directorioActual, int n, char *string){
 	/* Variables */
 	 DIR *dirp;
 	 struct dirent *direntp;
@@ -8,8 +8,8 @@ void listar(char *directorioActual, int n, char *string){
 	/* Abrimos el directorio */
 	 dirp = opendir(directorioActual);
 	 if (dirp == NULL){
-		printf("Error: No se puede abrir el directorio\n");
-	 	exit(2);
+		//printf("Error: No se puede abrir el directorio\n");
+	 	return -1;
 	 }
 
 	/* Leemos las entradas del directorio */
@@ -45,6 +45,7 @@ void listar(char *directorioActual, int n, char *string){
 	 
 	 /* Cerramos el directorio */
 	 closedir(dirp);
+	 return 0;
 }
 
 unsigned cuentaStringArchivo(char *nombreArchivo, int n, char *string){

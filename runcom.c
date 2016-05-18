@@ -227,6 +227,7 @@ runcommand(char * const*cline, unsigned where) {
             run_findByString(cline);
             exit(127);
         } else {
+            printf("Ejecutamos la orden: %s", cline[0]);
             execvp(*cline, cline);    /* Ejecutamos la orden. */
             perror(*cline);           /* Se llega aquí si no se ha podido
                                      ejecutar. Por tanto, se ha producido
